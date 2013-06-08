@@ -1,30 +1,28 @@
-<!DOCTYPE html>
+<?php include "header.php" ?>
+	<!-- body opened in header.php -->
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				type: 'POST',
+				url: 'controllers/index_controller.php',
+				success: function(data) {
+					document.getElementById('holder').innerHTML = data;
+				}
+			});
+		})
 
-<html>
-	<head>
-		<title>Jared A Rosen</title>
-
-		<style>
-			* {
-				padding: 0px;
-				margin: 0px;
-			}
-
-			body{
-				background-color: gray;
-				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			}
-
-			#container{
-				width: 100%;
-				height: 100%;
-			}
-
-		</style>
-	</head>
-	<body>
+		var array = new Array();
+		var counter = 0;
+		function num(val){
+			array[counter] = val;
+			//alert(array);
+			counter++;
+		}
+	</script>
 		<div id="container">
-			<img src="https://dl.dropboxusercontent.com/u/23055564/tree.png" alt="tree - coming soon" width="100%"/>
+			<div id="holder">
+				<div class="circle"></div>
+			</div>
 		</div>
 	</body>
 </html>
