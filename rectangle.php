@@ -16,18 +16,16 @@
 		}
 
 		#myC{
-			width: 500px;
-			height: 500px;
 			position: fixed;
 			z-index: 0;
 			background-color: gray;
 		}
 		#callback{
-			width: 100px;
-			height: 100px;
+			/*width: 100px;
+			height: 100px;*/
 			position: fixed;
-			top: 0px;
-			left: 0px;
+			/*top: 0px;
+			left: 0px;*/
 			z-index: 1;
 			background-color: black;
 		}
@@ -37,17 +35,29 @@
 		<canvas id="myC">
 			Your browser does not support the HTML5 canvas tag.
 		</canvas>
-		<div id="xycoordinates"></div>
-		<div id="callback"></div>
+		
+		<!--<div id="xycoordinates"></div>-->
+		
+		<div id="callback">
+			<!-- stuff -->
+		</div>
 
 		<script>
 			// returns width of browser viewport
 			var width = $(window).width();
-			$("#callback").hide();
+			var height = $(window).height();
 
-			//
+			
+			//var cb = document.getElementById("callback");
+			/*cb.style.width = '200px';
+			cb.style.height = '200px';*/
+			//$("#callback").hide();
+
+
 			var c = document.getElementById("myC");
 			var ctx = c.getContext("2d");
+			c.width = width;
+			c.height = height;
 
 
 			// keeps track of if the mouse is up or down
@@ -74,13 +84,14 @@
 						'data': array,
 					},
 					success: function(data) {
-						var data = json.parse(data);
-						var div = document.getElementById("callback");
-						div.style.width = data.width + "px";
-						div.style.height = data.height + "px";
-						div.style.left = data.tlx + "px";
-						div.style.top = data.tly + "px";
-						$("#callback").show();
+						//$("#callback").show();
+						var cb = document.getElementById("callback");
+						var jdata = JSON.parse(data);
+						cb.style.width = jdata.w + 'px';
+						cb.style.height = jdata.h + 'px';
+						cb.style.left = jdata.tlx + 'px';
+						cb.style.top = jdata.tly + 'px';
+						//alert(jdata.tly);
 					}
 				});
 			}
@@ -95,21 +106,19 @@
 			var counter = 0; 
 			function MouseMove(e){
 				e.preventDefault();
-				if(mouseDown){
-					var offset = $('#myC').offset();
-					var x1 = Math.floor((e.pageX - offset.left));
-					var y1 = Math.floor((e.pageY - offset.top));
-					var t = e.pageX;
-					//alert(t);
+				if(mouseDown == true){
+					var x = e.pageX;
+					var y = e.pageY;
+					//document.getElementById("xycoordinates").innerHTML = "Coordinates: (" + x + "," + y + ")";
 					
-					x = e.clientX;
-					y = e.clientY;
-					document.getElementById("xycoordinates").innerHTML = "Coordinates: (" + x + "," + y + ")";
-					ctx.fillStyle="#FF0000";
-					ctx.fillRect(x1, y1, 4, 2); 
+					//ctx.fillStyle="#FF0000";
+					ctx.fillRect(x, y, 3, 3); 
+					/*alert(x);
+					alert(y);*/
+
 					array[counter] = x;
 					counter++;
-					array[counter] = y;
+					array[counter] = (-y);
 					counter++
 					set = true;
 				}

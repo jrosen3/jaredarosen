@@ -1,5 +1,5 @@
 <?php
-	//$data = array(0,0,150,20,140,30,5,30,0,0);
+	//$data = array(0,0, 150,(-20), 150,(-20), 0,(-20), 0,0);
 
 	$data = $_POST["data"];
 
@@ -15,8 +15,8 @@
 	$_MAX = 10000;
 	$tl = array("x" => 0, "y" => 0);
 	$tr = array("x" => $_MAX, "y" => 0);
-	$br = array("x" => $_MAX, "y" => $_MAX);
-	$bl = array("x" => 0, "y" => $_MAX);
+	$br = array("x" => $_MAX, "y" => -$_MAX);
+	$bl = array("x" => 0, "y" => -$_MAX);
 	
 	// will hold the points that are he orners of the rectangle
 	$closest = array(
@@ -24,7 +24,7 @@
 		"tr" => array("d" => 1000000, "x" => null, "y" => null), 
 		"br" => array("d" => 1000000, "x" => null, "y" => null), 
 		"bl" => array("d" => 1000000, "x" => null, "y" => null));
-	
+	//print_r($closest);
 	// find the conrners of the rectange
 	foreach($points as $point)
 	{
@@ -59,6 +59,8 @@
 			$closest["bl"]["x"] = $point["x"];
 			$closest["bl"]["y"] = $point["y"];
 		}
+
+		//print($point["x"] . "," . $point["y"] . ": " . $ctl . "-" . $ctr . "-" . $cbr . "-" . $cbl . "\n");
 	}
 
 	// make sure the first point and last point drawn are near eachother
@@ -76,7 +78,11 @@
 		$closest["bl"]["x"], $closest["bl"]["y"], 
 		$closest["br"]["x"], $closest["br"]["y"]) == true)
 	{
-		$responce = array("tlx" => $closest["tl"]["x"], "tly" => -$closest["tl"]["y"], "width" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["tr"]["x"], $closest["tr"]["y"])), "height" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["bl"]["x"], $closest["bl"]["y"])));
+		$responce = array(
+			"tlx" => $closest["tl"]["x"], 
+			"tly" => -$closest["tl"]["y"], 
+			"w" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["tr"]["x"], $closest["tr"]["y"])), 
+			"h" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["bl"]["x"], $closest["bl"]["y"])));
 		
 		$responce = json_encode($responce);
 		echo "$responce";
@@ -94,8 +100,9 @@
 
 
 
-	function dist($x1, $y1, $y2, $x2)
+	function dist($x1, $y1, $x2, $y2)
 	{
+		//print("dist: (" . $x1 .", " $y1 .") (" . $y2 . ", " . $x2 . ")");
 		return sqrt((pow(($x2 - $x1), 2) + pow(($y2 - $y1), 2)));
 	}
 
@@ -114,13 +121,11 @@
 		$c = IsOrthogonal($cx, $cy, $dx, $dy, $bx, $by);
 		$d = IsOrthogonal($dx, $dy, $ax, $ay, $cx, $cy);
 		$a = floor($a);
-		#echo "$a\n";
 		$b = floor($b);
-		#echo "$b\n";
 		$c = floor($c);
-		#echo "$c\n"; 
 		$d = floor($d);
-		#echo "$d\n";
+		
+		// echo "$a - $b - $c - $d\n";
 
 		$min = 60; $max = 120;
 		if(($a > $min) && ($a < $max) && ($b > $min) && ($b < $max) && ($c > $min) && ($c < $max) && ($d > $min) && ($d < $max))
