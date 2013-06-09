@@ -1,5 +1,5 @@
 <?php
-	//$data = array(0,0, 150,(-20), 150,(-20), 0,(-20), 0,0);
+	//$data = array(0,0, 200,0, 200,(-200), 0,(-200), 0,0);
 
 	$data = $_POST["data"];
 
@@ -63,9 +63,46 @@
 		//print($point["x"] . "," . $point["y"] . ": " . $ctl . "-" . $ctr . "-" . $cbr . "-" . $cbl . "\n");
 	}
 
+	$num = sizeof($points);
+	$cx = 0;
+	$cy = 0;
+	$w = floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["tr"]["x"], $closest["tr"]["y"]));
+	$h = floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["bl"]["x"], $closest["bl"]["y"]));
+	foreach($points as $point)
+	{
+		if((($t = dist($point["x"], $point["y"], $point["x"], $closest["tl"]["y"])) / $h) < 0.05)
+		{
+			$cy++;
+			//echo "1\n";
+		}
+		elseif((($t = dist($point["x"], $point["y"], $point["x"], $closest["bl"]["y"])) / $h) < 0.05)
+		{
+			$cy++;
+			//echo "2\n";
+		}
+		elseif((($t = dist($point["x"], $point["y"], $closest["tl"]["x"], $point["y"])) / $w) < 0.05)
+		{
+			$cx++;
+		}
+		elseif((($t = dist($point["x"], $point["y"], $closest["tr"]["x"], $point["y"])) / $w) < 0.05)
+		{
+			$cx++;
+		}
+	}
+
+	if((($cx / $num) > 0.30) || (($cy / $num) > 0.30))
+	{
+		#continue
+	}
+	else
+	{
+		echo "$num and $cx and $cy \n";
+		return;
+	}
+
 	// make sure the first point and last point drawn are near eachother
 	$end = end($points);
-	if((dist($points[0][x], $points[0][y], $end[x], $end[y])) > 100)
+	if(((dist($points[0][x], $points[0][y], $end[x], $end[y])) / $h) > 0.3)
 	{
 		echo "that is not a closed rectangle\n";
 		return;
@@ -81,15 +118,15 @@
 		$responce = array(
 			"tlx" => $closest["tl"]["x"], 
 			"tly" => -$closest["tl"]["y"], 
-			"w" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["tr"]["x"], $closest["tr"]["y"])), 
-			"h" => floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["bl"]["x"], $closest["bl"]["y"])));
+			"w" => $w,
+			"h" => $h);
 		
 		$responce = json_encode($responce);
 		echo "$responce";
 		return;
 	}
 	else{
-		echo "that is not a rectangle\n";
+		echo "that is not a rectangle!\n";
 		return;
 	}
 
@@ -125,10 +162,29 @@
 		$c = floor($c);
 		$d = floor($d);
 		
-		// echo "$a - $b - $c - $d\n";
+		//echo "$a - $b - $c - $d\n";
+		$count = 0;
+		$min = 50; $max = 130;
+		if(($a > $min) && ($a < $max))
+		{
+			$count++;
+		}
+		if(($b > $min) && ($b < $max))
+		{
+			$count++;
+		}
+		if(($c > $min) && ($c < $max))
+		{
+			$count++;
+		}
+		if(($d > $min) && ($d < $max))
+		{
+			$count++;
+		}
 
-		$min = 60; $max = 120;
-		if(($a > $min) && ($a < $max) && ($b > $min) && ($b < $max) && ($c > $min) && ($c < $max) && ($d > $min) && ($d < $max))
+		
+		//if(($a > $min) && ($a < $max) && ($b > $min) && ($b < $max) && ($c > $min) && ($c < $max) && ($d > $min) && ($d < $max))
+		if($count >= 3)
 		{
 			return true;
 		}

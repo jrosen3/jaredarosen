@@ -4,10 +4,18 @@
 	<head>
 		<title>Rectangle</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	</head>
 
 	<style>
-		*{margin: 0; padding: 0;}
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 15px;
+		}
 
 		body{
 			width: 100%;
@@ -21,14 +29,30 @@
 			background-color: gray;
 		}
 		#callback{
-			/*width: 100px;
-			height: 100px;*/
 			position: fixed;
-			/*top: 0px;
-			left: 0px;*/
 			z-index: 1;
 			background-color: black;
 		}
+
+		#callback #close{
+			margin: -10px;
+			width: 20px;
+			height: 20px;
+			background: black;
+			color: red;
+			text-align: center;
+			border: 1px solid red;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+		}
+
+		#callback #close:hover{
+			background: red;
+			color: black;
+			border: 1px solid black;
+		}
+
 	</style>
 
 	<body>
@@ -39,6 +63,7 @@
 		<!--<div id="xycoordinates"></div>-->
 		
 		<div id="callback">
+			<div id="close" onClick="hide()">X</div>
 			<!-- stuff -->
 		</div>
 
@@ -47,11 +72,12 @@
 			var width = $(window).width();
 			var height = $(window).height();
 
-			
-			//var cb = document.getElementById("callback");
-			/*cb.style.width = '200px';
-			cb.style.height = '200px';*/
-			//$("#callback").hide();
+			$("#callback").hide();
+
+			$(function() {
+				$("#callback").resizable();
+				$("#callback").draggable();
+			});
 
 
 			var c = document.getElementById("myC");
@@ -71,6 +97,7 @@
 			$("#myC").mouseup(MouseUp)
 
 			function MouseUp(e){
+				ctx.clearRect(0, 0, width, height);
 				if(set == false){
 					return;
 				}
@@ -84,14 +111,14 @@
 						'data': array,
 					},
 					success: function(data) {
-						//$("#callback").show();
+						//alert(data);
+						$("#callback").show();
 						var cb = document.getElementById("callback");
 						var jdata = JSON.parse(data);
 						cb.style.width = jdata.w + 'px';
 						cb.style.height = jdata.h + 'px';
 						cb.style.left = jdata.tlx + 'px';
 						cb.style.top = jdata.tly + 'px';
-						//alert(jdata.tly);
 					}
 				});
 			}
@@ -109,13 +136,7 @@
 				if(mouseDown == true){
 					var x = e.pageX;
 					var y = e.pageY;
-					//document.getElementById("xycoordinates").innerHTML = "Coordinates: (" + x + "," + y + ")";
-					
-					//ctx.fillStyle="#FF0000";
 					ctx.fillRect(x, y, 3, 3); 
-					/*alert(x);
-					alert(y);*/
-
 					array[counter] = x;
 					counter++;
 					array[counter] = (-y);
@@ -123,6 +144,10 @@
 					set = true;
 				}
 			};
+
+			function hide(){
+				$("#callback").hide();
+			}
 		</script>		
 	</body>
 </html>
