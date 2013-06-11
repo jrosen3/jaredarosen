@@ -3,6 +3,12 @@
 
 	$data = $_POST["data"];
 
+	if(!is_numeric($data[5]))
+	{
+		echo "false";
+		return;
+	}
+
 	// parse points into an array of arrays
 	$points = array();
 	$size = sizeof($data);
@@ -68,23 +74,29 @@
 	$cy = 0;
 	$w = floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["tr"]["x"], $closest["tr"]["y"]));
 	$h = floor(dist($closest["tl"]["x"], $closest["tl"]["y"], $closest["bl"]["x"], $closest["bl"]["y"]));
+	if($h == 0 || $w == 0)
+	{
+		echo "false";
+		return;
+	}
 	foreach($points as $point)
 	{
-		if((($t = dist($point["x"], $point["y"], $point["x"], $closest["tl"]["y"])) / $h) < 0.05)
+		$thres = 0.1;
+		if((($t = dist($point["x"], $point["y"], $point["x"], $closest["tl"]["y"])) / $h) < $thres)
 		{
 			$cy++;
 			//echo "1\n";
 		}
-		elseif((($t = dist($point["x"], $point["y"], $point["x"], $closest["bl"]["y"])) / $h) < 0.05)
+		elseif((($t = dist($point["x"], $point["y"], $point["x"], $closest["bl"]["y"])) / $h) < $thres)
 		{
 			$cy++;
 			//echo "2\n";
 		}
-		elseif((($t = dist($point["x"], $point["y"], $closest["tl"]["x"], $point["y"])) / $w) < 0.05)
+		elseif((($t = dist($point["x"], $point["y"], $closest["tl"]["x"], $point["y"])) / $w) < $thres)
 		{
 			$cx++;
 		}
-		elseif((($t = dist($point["x"], $point["y"], $closest["tr"]["x"], $point["y"])) / $w) < 0.05)
+		elseif((($t = dist($point["x"], $point["y"], $closest["tr"]["x"], $point["y"])) / $w) < $thres)
 		{
 			$cx++;
 		}
@@ -96,15 +108,17 @@
 	}
 	else
 	{
-		echo "$num and $cx and $cy \n";
+		//echo "$num and $cx and $cy \n";
+		echo "false";
 		return;
 	}
 
 	// make sure the first point and last point drawn are near eachother
 	$end = end($points);
-	if(((dist($points[0][x], $points[0][y], $end[x], $end[y])) / $h) > 0.3)
+	if(((dist($points[0][x], $points[0][y], $end[x], $end[y])) / $h) > 0.05)
 	{
-		echo "that is not a closed rectangle\n";
+		//echo "that is not a closed rectangle\n";
+		echo "false";
 		return;
 	}
 	
@@ -126,7 +140,8 @@
 		return;
 	}
 	else{
-		echo "that is not a rectangle!\n";
+		//echo "that is not a rectangle!\n";
+		echo "false";
 		return;
 	}
 
@@ -146,7 +161,12 @@
 	// finds the degreee measure of the angle between ab and ac
 	function IsOrthogonal($ax, $ay, $bx, $by, $cx, $cy)
 	{
-		return rad2deg(acos(((($ax * $bx) + ($ay * $by)) / ((dist($ax, $ay, $bx, $by)) * (dist($ax, $ay, $cx, $cy))))));
+		$bottom = dist($ax, $ay, $bx, $by) * dist($ax, $ay, $cx, $cy);
+		if($bottom == 0)
+		{
+			return;
+		}
+		return rad2deg(acos(((($ax * $bx) + ($ay * $by)) / ($bottom))));
 	}
 
 	// returns true if the corners form a rectangle
@@ -157,10 +177,10 @@
 		$b = IsOrthogonal($bx, $by, $cx, $cy, $ax, $ay);
 		$c = IsOrthogonal($cx, $cy, $dx, $dy, $bx, $by);
 		$d = IsOrthogonal($dx, $dy, $ax, $ay, $cx, $cy);
-		$a = floor($a);
+		/*$a = floor($a);
 		$b = floor($b);
 		$c = floor($c);
-		$d = floor($d);
+		$d = floor($d);*/
 		
 		//echo "$a - $b - $c - $d\n";
 		$count = 0;

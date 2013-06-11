@@ -109,17 +109,9 @@
 			$("#myC").mouseup(MouseUp)
 
 			function MouseUp(e){
-				/*ctx.save();
-				ctx.setTransform(1, 0, 0, 1, 0, 0);
 				ctx.clearRect(0, 0, width, height);
-				ctx.restore();*/
-				c.width = c.width;
-
-
 				e.preventDefault();
 				counter = 0;
-				last["x"] = null;
-				last["y"] = null;
 				$.ajax({
 					type: 'POST',
 					url: 'controllers/rectangle_controller.php',
@@ -153,25 +145,13 @@
 			$("#myC").mousemove(MouseMove);
 
 			//
-			var counter = 0;
-			var last = {};
-			last["x"] = null;
-			last["y"] = null; 
+			var counter = 0; 
 			function MouseMove(e){
 				e.preventDefault();
 				if(mouseDown == true){
 					var x = e.pageX;
 					var y = e.pageY;
-					if(counter == 0){
-						last["x"] = x;
-						last["y"] = y; 
-					}
-					ctx.moveTo(last["x"], last["y"]);
-					ctx.lineTo(x, y);
-					ctx.stroke();
-					last["x"] = x;
-					last["y"] = y;
-					//ctx.fillRect(x, y, 3, 3); 
+					ctx.fillRect(x, y, 3, 3); 
 					array[counter] = x;
 					counter++;
 					array[counter] = (-y);
