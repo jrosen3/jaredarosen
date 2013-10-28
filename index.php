@@ -1,28 +1,47 @@
-<?php include "header.php" ?>
-	<!-- body opened in header.php -->
-	<script>
-		$(document).ready(function() {
-			$.ajax({
-				type: 'POST',
-				url: 'controllers/index_controller.php',
-				success: function(data) {
-					document.getElementById('holder').innerHTML = data;
-				}
-			});
-		})
+<!DOCTYPE html>
 
-		var array = new Array();
-		var counter = 0;
-		function num(val){
-			array[counter] = val;
-			//alert(array);
-			counter++;
-		}
-	</script>
-		<div id="container">
-			<div id="holder">
-				<div class="circle"></div>
+<html>
+	<head>
+		<title>Jared Rosen</title>
+	</head>
+
+	<body>
+		<?php include"config.php"; ?>
+		<?php include"header.php"; ?>
+		<script>
+			$(document).ready(function() {
+				pattern();
+				pAnnimate();
+			});
+
+			$(window).resize(function() {
+				pattern()
+			});
+		</script>
+		<div id="bodyFrame">
+			<div id="bodyContent">
+				<div id="bodyNav">
+					<nav id="nav">
+						<a id="first">
+							<span class="pattern" id="pFirst"></span>
+							<span class="navTab">experience</span>
+						</a>
+						<a id="middle">
+							<span class="pattern" id="pMiddle"></span>
+							<span class="navTab">photography</span>
+						</a>
+						<a id="last">
+							<span class="pattern" id="pLast"></span>
+							<span class="navTab">connect</span>
+						</a>
+					</nav>
+				</div>
 			</div>
 		</div>
+		<?php include "footer.php"; ?>		
 	</body>
 </html>
+
+
+
+
