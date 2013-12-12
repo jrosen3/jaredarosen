@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Snap-a-Chat-Beam</title>
+        <title>Snap-a-Chat-Beam | Ari, Bobby, Jared</title>
         <meta name="description" content="ES52 Final Project" />
         <meta name="keywords" content="ES52, harvard, circuit, engineering" />
         <meta name="author" content="Jared Rosen" />
@@ -38,9 +38,10 @@
                     <li><a href="#nav1">Abstract</a> </li>
                     <li><a href="#nav2">Introduction</a></li>
                     <li><a href="#nav3">Design</a></li>
-                    <li><a href="#nav4">Conclution</a></li>
+                    <li><a href="#nav4">Conclusion</a></li>
                     <li><a href="#nav5">Appendix</a></li>
                 </ul>
+                <center><h5>Ari, Bobby, Jared</h5></center>
             </nav>
         </header>
 
@@ -68,6 +69,10 @@
                             <a href="img/2.jpg" rel="prettyPhoto[pp_gal]"  title="Transmit Stage"><img src="img/2.jpg" width="70" height="70" /></a>
                             <a href="img/3.jpg" rel="prettyPhoto[pp_gal]" title="Receive Stage"><img src="img/3.jpg" width="70" height="70" /></a>
                             <a href="img/4.jpg" rel="prettyPhoto[pp_gal]" title="Receive Stage"><img src="img/4.jpg" width="70" height="70" /></a>
+                            <a href="img/transmit-1.jpg" rel="prettyPhoto[pp_gal]" title="Audio to Arduino"><img src="img/transmit-1.jpg" width="70" height="70" /></a>
+                            <a href="img/transmit-2.jpg" rel="prettyPhoto[pp_gal]"  title="Arduino to Laser"><img src="img/transmit-2.jpg" width="70" height="70" /></a>
+                            <a href="img/record-1.jpg" rel="prettyPhoto[pp_gal]" title="Sensor to Arduino"><img src="img/record-1.jpg" width="70" height="70" /></a>
+                            <a href="img/record-2.jpg" rel="prettyPhoto[pp_gal]" title="Arduino to Audio"><img src="img/record-2.jpg" width="70" height="70" /></a>
                         </div>
                     </div>
                 </article>
@@ -75,7 +80,7 @@
                 <article class="article" id="nav2">
                     <p>Introduction</p>
                     <div class="test" id="int">
-                      We wanted to design a system that allows users to send fun, ephemeral  audio messages to each other. Based on the media sensation, Snapchat, we are hoping to capitalize on the multibillion dollar disappearing messaging sector to create “the next Facebook” (except ours is obviously cooler because it uses lasers!). Our project is a fun toy for anyone who has a seven second audio message to send and a friend to listen to it on the other end (or someone who pities you enough to play along).</br></br>
+                      We wanted to design a system that allows users to send fun, ephemeral  audio messages to each other. Based on the media sensation, <a href="http://www.snapchat.com/">Snapchat</a>, we are hoping to capitalize on the multibillion dollar disappearing messaging sector to create “the next Facebook” (except ours is obviously cooler because it uses lasers!). Our project is a fun toy for anyone who has a seven second audio message to send and a friend to listen to it on the other end (or someone who pities you enough to play along).</br></br>
 Our project has two major components--the transmitting stage and the receiving stage. Both are pieces are centered on a Arduino Due microcontroller (of which we used 2), which is used to digitize and store the message and control the user experience. Additionally both stages use analog filtering, amplification, etc., to maintain the highest possible audio quality though the record-->store-->transmit-->record-->store-->playback sequence.</br></br>
 While building Snap-a-Chat-Beam, we wanted to create a system that was very easy/intuitive to use and we let that guide our design process. We hid the internal complexity of the system behind a very simple user interface. The transmission stage has just two push buttons (record and transmit) and two DPDT switches (one for each filter). The receiving stage was even simpler; there is only one button (playback)--that’s fewer buttons than on the iPhone! Additionally, we added indicator LEDs, labeled accordingly so the user would also know what was going on with the system. Furthermore, we designed our project to run off of single supplies, a 9V battery for the transmission and the reception circuits, so it easy to transport/setup, which presented interesting design considerations, which are discussed in the next section.
                     </div>
@@ -112,12 +117,12 @@ We also achieved our goal of a clear layout and user interface. Having completed
 Lastly, we were effective in dealing with the number one limitation of our project, the RAM of the two Arduino Dues. We were able to sample at a rate that gave excellent resolution, and maximize the memory that we did have available by filtering noisy signals and giving more acuity at the playback end. Having 7-second messages is exactly the goal we set for ourselves, mirroring the Snapchat model of limited message length, maximum fun!</br></br>
 
 <h3>Design Narrative</h3>
-Overall, our design process was very smooth and progressed via an iterative, “build, test, evaluate, refine” method. We had a high-level concept of what we wanted our project to do, both for the digital and the analog sides. We then conceived of the actual circuitry, which we discussed, researched online, and drew upon previous labs for a jumping-off point. Our major stumbling block was the clarity of the reception circuit, the issue that we attempted to fix with hysteresis at first, as discussed above, eventually simplifying the problem and solving in software. The parts we found easy were filtering (which was old hat by this point), and creating some of the software ended up being pretty straightforward. Overall, our group dynamic was highly cooperative and supportive, and while we generally collaborated on each stage of the project, we also found opportunities to “divide and conquer”, helping speed up the build while still drawing on one another’s support
+Overall, our design process was very smooth and progressed via an iterative, “build, test, evaluate, refine” method. We had a high-level concept of what we wanted our project to do, both for the digital and the analog sides. We then conceived of the actual circuitry, which we discussed, researched online, and drew upon previous labs for a jumping-off point. Our major stumbling block was the clarity of the reception circuit, the issue that we attempted to fix with hysteresis at first, as discussed above, eventually simplifying the problem and solving in software. The parts we found easy were filtering (which was old hat by this point), and creating some of the software ended up being pretty straightforward. Overall, our group dynamic was highly cooperative and supportive, and while we generally collaborated on each stage of the project, we also found opportunities to “divide and conquer”, helping speed up the build while still drawing on one another’s support.
 
 </div>
                 </article>
                 <article class="article" id="nav4">
-                    <p>Conclution</p>
+                    <p>conclusion</p>
                     <div class="test" id="res">
                         When we started this project, we set out to accomplish the following goals: 
 <ol>
@@ -140,15 +145,25 @@ In addition, a problem with the breadboard implementation of our project was tha
                 <article class="article" id="nav5">
                     <p>Appendix</p>
                     <div class="test" id="app">
-                        <h3>Transmit Code</h3>
-                        <div class="code">
+                        <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <h3>Transmit Code</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="code">
                             <code>
                                 // definitions and globals</br>
                                 #define RESOLUTION 16 // the analogReadResolution and analogWriteResolution</br>
                                 #define MAX_SAMPLES 42000 // the max number of samples</br>
                                 #define LENGTH 7000 // length of message in ms</br>
-                                #define RECORD_DELAY 200 // dealy to achive about 6000Hz and 7s</br>
-                                #define TRANSMIT_DELAY 240 // dealy to match record frequecny/time</br>
+                                #define RECORD_DELAY 200 // delay to achive about 6000Hz and 7s</br>
+                                #define TRANSMIT_DELAY 240 // delay to match record frequecny/time</br>
                                 #define LASER_OFFSET 379 // ofset voltage for the laser 1024/2.7</br>
                                 #define CHIPMUNK 100 // how much faster than "normal" to make the transmition</br>
                                 #define SLOTH 50 // how much slower than "normal" to make the transmition</br>
@@ -262,14 +277,26 @@ In addition, a problem with the breadboard implementation of our project was tha
                             </code>
                         </div>
                         <a class="link" target="_blank" href="https://www.dropbox.com/s/oql75fd19ce0y1b/GM_t_version6.ino">Download Source</a>
-                        <h3>Reciever Code</h3>
-                        <div class="code">
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          <h3>Receiver Code</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="code">
                             <code>
                                 // definitions and globals
                                 </br>#define RESOLUTION 16 // the analogReadResolution and analogWriteResolution
                                 </br>#define MAX_SAMPLES 47000 // the max number of samples
-                                </br>#define RECORD_DELAY 150 // dealy to achive about 6000Hz and 7s
-                                </br>#define TRANSMIT_DELAY 177 // dealy to match record frequecny/time
+                                </br>#define RECORD_DELAY 150 // delay to achive about 6000Hz and 7s
+                                </br>#define TRANSMIT_DELAY 177 // delay to match record frequecny/time
                                 </br>#define COUNTDOWN_DELAY 5000 // how many samples are writen per second to keep the count doan a 1s intervals
                                 </br>#define DEBOUNCE 1000 // how many low readings from comparator before recording stops 
                                 </br>  
@@ -462,7 +489,11 @@ In addition, a problem with the breadboard implementation of our project was tha
                             </code>
                         </div>
                         <a class="link" target="_blank" href="https://www.dropbox.com/s/jfdwlymb8j554jt/GM_r_version3.ino">Download Source</a>
-                        </br>
+                        
+      </div>
+    </div>
+  </div>
+</div></br>
                         <h3>Circuit Diagrams</h3>
                         <div style="text-align: center;">
                             <a href="img/transmit-1.jpg" rel="prettyPhoto[pp_gal]" title="Audio to Arduino"><img src="img/transmit-1.jpg" width="70" height="70" /></a>
@@ -521,8 +552,8 @@ In addition, a problem with the breadboard implementation of our project was tha
       </div>
       <div class="modal-body">
         <center>
-          Bobby Flitsch</br>
           Ari Brenner</br>
+          Bobby Flitsch</br>
           Jared Rosen</br></br>
           December 13, 2013</br>
         </center>
@@ -536,6 +567,8 @@ In addition, a problem with the breadboard implementation of our project was tha
 
       <script type="text/javascript">
         $('#introModal').modal();
+        // $('.collapse').collapse()
+        // $('.collapse').collapse()
         $("a[rel^='prettyPhoto']").prettyPhoto();
           console.log("premature load");
       </script>

@@ -161,13 +161,16 @@ h3 {
 }
 
 h5 {
-    font-size: .75vw;
-    font-size: .75rem;
-    text-align: left;
+    font-size: 1vw !important;
+    font-size: 1rem !important;
     text-transform:uppercase;
     font-weight: lighter;
     letter-spacing:1px;
-    color: #333333;
+    border-top: 2px solid #cccccc; !important;
+    width: 30% !important;
+    color: #cccccc !important;
+    padding-top: 5px;
+
 }
 
 .link {
