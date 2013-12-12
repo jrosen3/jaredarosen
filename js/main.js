@@ -1,6 +1,6 @@
 function pattern() {
 	var f = $("#first").width();
-	var m = $("#middle").width() - (0.1 * $(window).width());
+	var m = $("#middle").width() - (0.1 * $('#bodyContent').width());
 	var l = $("#last").width();
 	
 	$("#pFirst").css({
@@ -13,6 +13,13 @@ function pattern() {
 
 	$("#pLast").css({
 		"width" : l+"px"
+	});
+
+	var left = $("#first").position()['left'];
+	var w = f + m + l + (0.1 * $('#bodyContent').width())
+	$("#name").css({
+		"width" : w+"px",
+		"left" : left+"px",
 	});
 }
 
@@ -38,7 +45,7 @@ function pAnnimate() {
 		$("#pMiddle").css({
 			'background-position' : n+'px 0px'
 		});
-		n += 2.0;
+		n += 1.5;
 	}, 25);
 	}).on('mouseleave', function(){
 		this.iid && clearInterval(this.iid);
@@ -53,7 +60,7 @@ function pAnnimate() {
 		$("#pLast").css({
 			'background-position' : n+'px 0px'
 		});
-		n += 2.0;
+		n += 2.5;
 	}, 25);
 	}).on('mouseleave', function(){
 		this.iid && clearInterval(this.iid);
