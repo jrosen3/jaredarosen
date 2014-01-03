@@ -10,10 +10,10 @@ header {
 }
 
 #navigation {
-    overflow-x: scroll;
-    white-space: nowrap;
+    /*overflow-x: scroll;*/
+    /*white-space: nowrap;*/
     margin-top: 15px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     position: relative;
 }
 

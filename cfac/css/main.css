@@ -88,7 +88,8 @@ footer {
     height: 50px;
     background: #3E3E40;
     color: #D4CFC9;
-    font-size: .5em;
+    font-size: 1em;
+    margin: 0px;
 }
 
 .link {
@@ -102,20 +103,22 @@ footer {
 
 .left {
 	float: left;
-	padding: 15px; /* should match padding on .right */
+	padding: 15px 20px 0px 20px; /* should match padding on .right */
 }
 
 .right {
 	float: right;
-	padding: 15px; /* should match padding on .left */
+	padding: 15px 20px 0px 20px; /* should match padding on .left */
 }
 
 h1 {
 	font-size: 2em;
-	font-family: DaysLater
+	font-family: DaysLater;
+	margin: 0px;
+	padding: 0px;
 }
 
-.title {
+.main-title {
 	font-size: 1em;
 	font-family: DaysLater;
 	margin: 0px 20px;

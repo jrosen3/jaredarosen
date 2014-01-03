@@ -39,19 +39,19 @@
     <div id="all">
       <header>
         <ul id="navigation">
-          <li><span class="title">Compost for a Cause</span></li>
+          <li><span class="main-title">Compost for a Cause</span></li>
           <li><a href="#section1" class="current s1">About</a></li>
-          <li><a href="#section2" class="s2">Partners</a></li>
-          <li><a href="#section3" class="s3">Order</a></li>
-          <li><a href="#section4" class="s4">Our Story</a></li>
-          <li><a href="#section5" class="s5">Composting Tips</a></li>
+          <li><a href="#section2" class="s2">The Story</a></li>
+          <li><a href="#section3" class="s3">Composting Tips</a></li>
+          <li><a href="#section4" class="s4">Order</a></li>
+          <li><a href="#section5" class="s5">Partners</a></li>
         </ul>
       </header>
 
       <div id="section1" class="pageSection">
         <div class="push-down"></div>
         <div class="top-border"></div>
-        <div class="section-img imgLiquidFill-fill"><img src="img/compost.jpg"/></div>
+        <div class="section-img imgLiquidFill-fill"><img src="img/bags_test.jpg"/></div>
         <div class="botom-border"></div>
         <div class="circle"><img class="icon midway-vertical midway-horizontal" src="img/shears.png"/></div>
         <div class="circle-border"></div>
@@ -75,7 +75,7 @@
         <div class="circle-border"></div>
         <div class="content">
           <!-- content goes here -->
-          <h1 class="title">Partners</h1>
+          <h1 class="title">The Story</h1>
         </div>
         <div class="clear-bottom"></div>
       </div>
@@ -88,7 +88,7 @@
         <div class="circle-border"></div>
         <div class="content">
           <!-- content goes here -->
-          <h1 class="title">Order</h1>
+          <h1 class="title">Composting Tips</h1>
         </div>
         <div class="clear-bottom"></div>
       </div>
@@ -101,7 +101,7 @@
         <div class="circle-border"></div>
         <div class="content">
           <!-- content goes here -->
-          <h1 class="title">Our Story</h1>
+          <h1 class="title">Order</h1>
         </div>
         <div class="clear-bottom"></div>
       </div>
@@ -114,14 +114,14 @@
         <div class="circle-border"></div>
         <div class="content">
           <!-- content goes here -->
-          <h1 class="title">Composting Tips</h1>
+          <h1 class="title">Partners</h1>
         </div>
         <div class="clear-bottom"></div>
       </div>
 
       <footer>
         <div class="left"><p>&copy; Copyright Kevin Rosen, <span id="date"></span>. All Rights Reserved.</p></div>
-        <div class="right"><p><a class="link" href="mailto:compostforacause@gmail.com.com">compostforacause@gmail.com</a></p></div>
+        <div class="right"><p><a class="link" href="mailto:compostforacause@gmail.com">compostforacause@gmail.com</a></p></div>
       </footer>
     </div>
   </body>
