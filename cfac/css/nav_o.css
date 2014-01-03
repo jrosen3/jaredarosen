@@ -1,0 +1,28 @@
+#navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 10px 10px -10px #000000;
+}
+#navigation > li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#navigation > li > a {
+    margin: 1px;
+    color: #000000;
+    background: #cccccc;
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    transition: all 400ms;
+}
+#navigation > li > a.current,
+#navigation > li:hover > a {
+    background: #999999;    
+}
