@@ -1,95 +1,112 @@
 * {
-	margin: 0vw;
-	padding: 0vw;
-	width: 100%;
-	height: 100%;
-	font-family: Helvetica Neue, Helvetica, serif;
+	margin: 0px;
+	padding: 0px;
 }
 
-.navTab {
-	color: black;
+body {
+	background-image: url(../img/brushed.png);
+	font-family: 'helvetica neue', helvetica, arial, sans-serif;
 	font-weight: lighter;
-	letter-spacing: 5px;
-	font-size: 2vw;
-	text-transform: uppercase;
+	color: #fff;
 }
 
-#name{
-	color: black;
-	font-weight: bold;
-	letter-spacing: 5px;
-	font-size: 2vw;
-	text-transform: uppercase;
-	position: absolute;
-	top: 2.5%;
-	border-bottom: 1px solid black;
-	text-align: center;
-	height: auto;
-	border-bottom: 2px solid black;
-	padding-bottom: .5vh;
-}
-
-#bodyFrame {
-	width: 100%;
-	height: 100%;
+#container {
+	width: 100vw;
+	max-width: 500px;
+	margin: 0px auto;
+	background-color: orange;
 	position: relative;
-	background-color: black;
 }
 
-#bodyContent {
-	width: 97%;
-	height: 85%;
-	left: 1.5%;
-	top: 1.5vw;
-	position: absolute;
-	background-color: white;
-	background-image: url('../img/brushed/brushed.png') 
-}
-
-#bodyNav {
+.grid {
 	width: 100%;
-	height: auto;
-	position: absolute;
-	top: 13.5%;
-	left: 0%;
+	border-bottom: 3px solid #fff;
+	background-color: green;
+	position: relative;
 }
 
-#nav {
+#name {
+	/*see main.js*/
+	position: fixed;
+	top: 0px;
+	z-index: 2;
+}
+
+#name p, #more p, #footer p, #comingsoon p {
+	text-align: center;
+	font-size: 200%;
+	overflow: hidden;
+	/*padding-top: 1vmin;*/
+}
+
+#bio {
+	/*see main.js*/
+}
+
+#bio p {
+	/*see main.js*/
+	padding: 5px;
+}
+
+#footer p {
+	font-size: 100%;
+}
+
+#pic {
+	background-image: url('../img/headshot-placeholder.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.socail {
+	/*see main.js*/
+}
+
+
+#twitter {
+	background-image: url('../img/twitter-w.png');
+	border-right: 3px solid white;
+	border-bottom: 3px solid white;
+}
+
+#flickr {
+	background-image: url('../img/flickr-w.png');
+	border-bottom: 3px solid white;
+}
+
+#linkedin {
+	background-image: url('../img/linkedin-w.png');
+	border-right: 3px solid white;
+}
+
+#mail {
+	background-image: url('../img/mail-w.png');
+}
+
+#more {
+	/*see main.js and above*/
+}
+
+#stuff {
 	text-align: center;
 }
 
-#nav a:hover{
-	text-decoration: none;
+.heading {
+	font-size: 200%;
+}
+
+#stuff ul {
+	list-style: none;
+}
+
+.link {
+	text-decoration: underline;
+	color: #fff;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 
-#nav #middle {
-	padding: 0vw 5vw;
-}
-
-#pFirst {
-	position: absolute;
-	margin: -1vw 0vw;
-	display: inline-block;
-	background-image: url('../img/nav-blue.png');
-	background-repeat:repeat-x;
-	background-size: 1vw .75vw;
-}
-
-#pMiddle {
-	position: absolute;
-	margin: -1vw 0vw;
-	display: inline-block;
-	background-image: url('../img/nav-green.png');
-	background-repeat:repeat-x;
-	background-size: .5vw .75vw;
-}
-
-#pLast {
-	position: absolute;
-	margin: -1vw 0vw;
-	display: inline-block;
-	background-image: url('../img/nav-red.png');
-	background-repeat:repeat-x;
-	background-size: 1.75vw .75vw;
-}

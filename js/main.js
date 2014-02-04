@@ -1,71 +1,113 @@
-function pattern() {
-	var f = $("#first").width();
-	var m = $("#middle").width() - (0.1 * $('#bodyContent').width());
-	var l = $("#last").width();
-	
-	$("#pFirst").css({
-		"width" : f+"px"
+$(document).ready(function(){
+	set_width();
+	set_bio();
+
+	var today = new Date();
+    var yyyy = today.getFullYear();
+    $("#date").html(yyyy);
+});
+
+$(window).resize(function(){
+	set_width();
+	set_bio();
+});
+
+function set_width(){
+	var w = $('#container').width();
+	$('.grid').css({
+		'height': w+'px'
 	});
 
-	$("#pMiddle").css({
-		"width" : m+"px"
+	$('#name, #more').css({
+		'height': (w/8)+'px',
+		'width': w+'px',
+		'line-height': (w/8)+'px'
 	});
 
-	$("#pLast").css({
-		"width" : l+"px"
+	$('#footer').css({
+		'height': (w/8)+'px',
+		'width': w+'px',
+		'line-height': ((w/8)/2)+'px',
+		'border-bottom': '0px'
 	});
 
-	var left = $("#first").position()['left'];
-	var w = f + m + l + (0.1 * $('#bodyContent').width())
-	$("#name").css({
-		"width" : w+"px",
-		"left" : left+"px",
-	});
-}
-
-function pAnnimate() {
-	$('#first').on('mouseenter', function() {
-		var n = 0
-		this.iid = setInterval(function() {
-		$("#pFirst").css({
-			'background-position' : n+'px 0px'
-		});
-		n += 2.0;
-	}, 25);
-	}).on('mouseleave', function(){
-		this.iid && clearInterval(this.iid);
-		$("#pFirst").css({
-			'background-position' : '0px 0px'
-		});
+	$('#bio').css({
+		'height': (w/2)+'px',
+		'margin-top': ((w/8)+3)+'px'
 	});
 
-	$('#middle').on('mouseenter', function() {
-		var n = 0
-		this.iid = setInterval(function() {
-		$("#pMiddle").css({
-			'background-position' : n+'px 0px'
-		});
-		n += 1.5;
-	}, 25);
-	}).on('mouseleave', function(){
-		this.iid && clearInterval(this.iid);
-		$("#pMiddle").css({
-			'background-position' : '0px 0px'
-		});
+	var sh = $(window).height() - ((w/8)*2) - 6;
+	$('#stuff').css({
+		'min-height': sh+'px',
+		'margin-top': ((w/8)+3)+'px'
 	});
 
-	$('#last').on('mouseenter', function() {
-		var n = 0
-		this.iid = setInterval(function() {
-		$("#pLast").css({
-			'background-position' : n+'px 0px'
-		});
-		n += 2.5;
-	}, 25);
-	}).on('mouseleave', function(){
-		this.iid && clearInterval(this.iid);
-		$("#pLast").css({
-			'background-position' : '0px 0px'
-		});
+	$('#comingsoon').css({
+		'height': sh+'px',
+		'margin-top': ((w/8)+3)+'px',
+		'line-height': sh+'px'
 	});
-}
+
+	var ss = (w/2) - 1.5;
+	$('.social').css({
+		'width': ss+'px',
+		'height': ss+'px',
+		'float': 'left',
+		'background-size': '50%',
+		'background-repeat': 'no-repeat',
+		'background-position': 'center',
+	});
+};
+
+function set_bio(){
+	var bth = $('#bio > p').height();
+	var bgh = $('#bio').height();
+	var font = parseInt($('#bio > p').css("font-size"));
+	while(bth > (bgh + 20)) {
+		$('#bio > p').css({
+			'font-size': font+'px'
+		});
+		font = font - 1;
+		bth = $('#bio > p').height();
+		bgh = $('#bio').height();
+	};
+
+	while(bth < (bgh - 20)) {
+		$('#bio > p').css({
+			'font-size': font+'px'
+		});
+		font = font + 1;
+		bth = $('#bio > p').height();
+		bgh = $('#bio').height();
+	};
+};
+
+function direct(where){
+	switch(where)
+	{
+		case 'home':
+			window.location.href = "../jaredarosen/";
+			break;
+		case 'twitter':
+			window.location.href = "https://twitter.com/JaredARosen";
+			break;
+		case 'flickr':
+			window.location.href = "../jaredarosen/comingsoon.php";
+			break;
+		case 'linkedin':
+			window.location.href = "http://www.linkedin.com/pub/jared-rosen/53/204/94";
+			break;
+		case 'mail':
+			window.location.href = "mailto:jaredarosen@gmail.com";
+			break;
+		case 'more':
+			window.location.href = "../jaredarosen/more.php";
+			break;
+		default:
+			window.location.href = "../jaredarosen/";
+	};
+};
+
+
+
+

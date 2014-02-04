@@ -1,0 +1,16 @@
+headhot
+summary
+twitter
+linkedin
+flikr
+email
+more
+	downloads
+		headshot
+		resume
+		bio
+	selected work
+		cs109
+		website
+		junior paper
+  (powered by)
