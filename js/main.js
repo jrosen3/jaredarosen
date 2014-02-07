@@ -1,16 +1,23 @@
 $(document).ready(function(){
-	set_width();
-	set_bio();
-
+	// set_mobile();
 	var today = new Date();
     var yyyy = today.getFullYear();
     $("#date").html(yyyy);
+	set();
 });
 
 $(window).resize(function(){
-	set_width();
-	set_bio();
+	set();
 });
+
+$(window).load(function(){
+	set();
+});
+
+function set(){
+	set_width();
+	// set_bio();
+};
 
 function set_width(){
 	var w = $('#container').width();
@@ -63,7 +70,7 @@ function set_bio(){
 	var bth = $('#bio > p').height();
 	var bgh = $('#bio').height();
 	var font = parseInt($('#bio > p').css("font-size"));
-	while(bth > (bgh + 20)) {
+	while(bth > (bgh + 10)) {
 		$('#bio > p').css({
 			'font-size': font+'px'
 		});
@@ -72,13 +79,13 @@ function set_bio(){
 		bgh = $('#bio').height();
 	};
 
-	while(bth < (bgh - 20)) {
+	while(bth < (bgh - 30)) {
 		$('#bio > p').css({
 			'font-size': font+'px'
 		});
 		font = font + 1;
-		bth = $('#bio > p').height();
-		bgh = $('#bio').height();
+		bth = $('#bio > p').height() + 5;
+		bgh = $('#bio').height(); 
 	};
 };
 
@@ -86,28 +93,47 @@ function direct(where){
 	switch(where)
 	{
 		case 'home':
-			window.location.href = "../jaredarosen/";
+			set_ga('home', 1);
+			window.location.href = "/";
 			break;
 		case 'twitter':
+			set_ga('twitter', 1);
 			window.location.href = "https://twitter.com/JaredARosen";
 			break;
 		case 'flickr':
-			window.location.href = "../jaredarosen/comingsoon.php";
+			set_ga('flickr', 1);
+			window.location.href = "http://www.flickr.com/photos/jaredrosen/sets/";
 			break;
 		case 'linkedin':
+			set_ga('linkedin', 1);
 			window.location.href = "http://www.linkedin.com/pub/jared-rosen/53/204/94";
 			break;
 		case 'mail':
+			set_ga('mail', 1);
 			window.location.href = "mailto:jaredarosen@gmail.com";
 			break;
 		case 'more':
-			window.location.href = "../jaredarosen/more.php";
+			set_ga('more', 1);
+			window.location.href = "/more.php";
 			break;
 		default:
-			window.location.href = "../jaredarosen/";
+			window.location.href = "/";
 	};
 };
 
+function set_mobile(){
+	var isMobile = function() {
+		//console.log("Navigator: " + navigator.userAgent);
+		return /(iphone|ipod|ipad|android|blackberry|windows ce|palm|symbian)/i.test(navigator.userAgent);
+ 	};
+ 	if(isMobile()) {
+ 		window.location.href = "http://www.google.com";
+	};
+};
+
+function set_ga(lab, num){
+	ga('send', 'event', 'button', 'click', lab);
+};
 
 
 
