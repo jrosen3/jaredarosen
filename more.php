@@ -12,6 +12,7 @@
     <ul>
       <li><a class="link" href="/downloads/rosen_jared-juniorpaper-u20140204.pdf" target="_blank" onclick="set_ga('juniorpaper', 1);">junior paper</a></li>
       <li><a class="link" href="http://nbviewer.ipython.org/github/jrosen3/cs109annstock/blob/master/Master.ipynb" target="_blank" onclick="set_ga('cs109', 1);">data science final project</a></li>
+      <li><a class="link" href="http://www.huds.us" target="_blank" onclick="set_ga('huds', 1);">#huds</a></li>
       <!-- <li><a class="link" href="../jaredarosen/comingsoon.php" target="_blank">cfac website</a></li> -->
     </ul>
   </div>
